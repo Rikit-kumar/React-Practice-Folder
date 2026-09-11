@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+  padding: 0;box-sizing: border-box;
+}
+
+html,body{
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+main{
+  min-height: 100vh;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+h2{
+  font-size: 6rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.btns{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+button{
+  padding: 1rem 3rem;
+  border: none;
+  background-color: #e4d577;
+  border-radius: 1rem;
+  font-size: 1.3rem;
+  color: black;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+
+button:hover{
+  background-color: #beb15d;
+}
