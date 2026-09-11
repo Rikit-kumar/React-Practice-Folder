@@ -4,6 +4,8 @@ import axios from "axios";
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [searchData, setSearchData] = useState(null);
+  const [scrollY, setScrollY] = useState(null);
+  let throttling = false;
 
   const getProducts = async () => {
     try {
@@ -24,6 +26,7 @@ const HomePage = () => {
     setProducts(result);
   };
 
+  // Debouncing
   useEffect(() => {
     if (!searchData) return;
 
@@ -31,8 +34,30 @@ const HomePage = () => {
       searchProduct();
     }, 700);
 
-    return () => clearInterval(timeout);
+    return () => clearInterval(timeout);    
   }, [searchData]);
+
+
+  // Throttling
+  useEffect(()=>{
+
+    let handleScroll = ()=>{
+
+        if(throttling) return;
+
+        throttling = true;
+        console.log('Throttling Trigger')
+        setScrollY(window.scrollY);
+
+        setTimeout(() => {
+            throttling = false
+        }, 5000);
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return ()=> window.removeEventListener("scroll", handleScroll);
+  }, [])
 
   useEffect(() => {
     getProducts();
